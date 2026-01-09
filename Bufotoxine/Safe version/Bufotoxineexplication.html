@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cubo RGB Giratório</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #1a1a1a;
+            overflow: hidden;
+            perspective: 1000px;
+        }
+
+        /* Container do Cubo */
+        .cube {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            transform-style: preserve-3d;
+            animation: rotateCube 10s infinite linear;
+        }
+
+        /* Estilização das Faces */
+        .face {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            font-size: 2rem;
+            color: white;
+            text-transform: uppercase;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            
+            /* Efeito RGB Animado */
+            background: linear-gradient(45deg, #ff0000, #ff00ff, #0000ff, #00ffff, #00ff00, #ffff00, #ff0000);
+            background-size: 400% 400%;
+            animation: rgbShift 5s ease infinite;
+            opacity: 0.9;
+        }
+
+        /* Posicionamento das Faces no Espaço 3D */
+        .front  { transform: rotateY(0deg) translateZ(100px); }
+        .back   { transform: rotateY(180deg) translateZ(100px); }
+        .right  { transform: rotateY(90deg) translateZ(100px); }
+        .left   { transform: rotateY(-90deg) translateZ(100px); }
+        .top    { transform: rotateX(90deg) translateZ(100px); }
+        .bottom { transform: rotateX(-90deg) translateZ(100px); }
+
+        /* Animação de Rotação */
+        @keyframes rotateCube {
+            from { transform: rotateX(0deg) rotateY(0deg); }
+            to { transform: rotateX(360deg) rotateY(360deg); }
+        }
+
+        /* Animação de Cores RGB */
+        @keyframes rgbShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cube">
+        <div class="face front">Bufotoxine</div>
+        <div class="face back">a chemical poison</div>
+        <div class="face right">it can be deadly</div>
+        <div class="face left">it is mostly found in poisonous frogs</div>
+        <div class="face top">toads of the genus Bufo, in this case</div>
+        <div class="face bottom">if you eat or drink this poison, you starts vomiting violently</div>
+    </div>
+
+</body>
+</html>
